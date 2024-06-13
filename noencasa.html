@@ -22,30 +22,42 @@
 
     
     <!-- botones*********************************************-->
-    <div id="outer">     
-        <a href="index.html">
-            <div class="button_slide slide_down">VOLVER </div>
-            <br /> <br /><br />
-        </a>      
-        </div>
+    
     <!-- botones*********************************************-->
 
-    <div class="noencasa">
-        <h1>Introduzca Nombre de la calle y Numero</h1>
-        <form id="userForm">
-            <label for="name">Calle:</label><br>
-            <input type="text" id="name" name="name" required>
-            <br><br>
-            <label for="number">Número:</label><br>
-            <input type="number" id="number" name="number" required>
-            <br><br>
-            <button class="button_slide slide_down" type="submit">Agregar</button>
+    <div class="container">
+        <h1>NO EN CASA</h1>
+        <form id="id-form">
+            <label for="id-input" class="nroTerris">NRO DE TERRITORIO</label>
+            <input type="text" id="id-input" required>
+            <button type="submit" class="button_slide slide_down">Guardar Nro de Territorio</button>
+            <button type="button" class="button_slide slide_down">Cambiar Nro de Territorio</button>
         </form>
-        <h2>No en casas:</h2>
-        <p id="output"></p>
-    
-        <script src="script.js"></script>
+
+        
+        <form id="data-form">
+            <label for="name-input">Calle:</label>
+            <input type="text" id="name-input" required>
+            <label for="number-input">Número:</label>
+            <input type="number" id="number-input" required>
+            <button type="submit" class="button_slide slide_down">Agregar</button>
+            <button class="button_slide slide_down">Borrar último dato</button>
+        </form>
+
+        <div id="output"></div>
+        <button class="button_slide slide_down">Copiar datos</button>
+
+
+        <div class="btn-volver">     
+            <a href="index.html">
+                <div class="button_slide slide_down">VOLVER </div>
+                <br /> <br /><br />
+            </a>      
+        </div>
     </div>
+    <script src="script.js"></script>
+
+   
     
 </body>
 </html>
