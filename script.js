@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.getSelection().addRange(range);
         try {
             document.execCommand('copy');
-            alert('Datos copiados al portapapeles');
+            alert('DATOS COPIADOS, LISTO PARA ENVIAR POR WASAP');
         } catch (err) {
             console.error('Error al copiar al portapapeles', err);
         }
