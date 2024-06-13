@@ -40,12 +40,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     copyButton.addEventListener('click', () => {
-        const textToCopy = outputDiv.innerText;
-        navigator.clipboard.writeText(textToCopy).then(() => {
+        const range = document.createRange();
+        range.selectNode(outputDiv);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        try {
+            document.execCommand('copy');
             alert('Datos copiados al portapapeles');
-        }).catch(err => {
+        } catch (err) {
             console.error('Error al copiar al portapapeles', err);
-        });
+        }
+        window.getSelection().removeAllRanges();
     });
 
     editIdButton.addEventListener('click', () => {
