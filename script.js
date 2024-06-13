@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
             idInput.disabled = true;
             idForm.querySelector('button[type="submit"]').disabled = true;
             dataForm.style.display = 'block';
-            outputDiv.innerHTML = `<p>ID: ${id}</p>`;
+            outputDiv.innerHTML = `<p>Territorio Nro: ${id}</p>`;
             copyButton.style.display = 'block';
             editIdButton.style.display = 'block';
             deleteLastButton.style.display = 'block';
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
         idInput.disabled = true;
         idForm.querySelector('button[type="submit"]').disabled = true;
         dataForm.style.display = 'block';
-        outputDiv.innerHTML = `<p>ID: ${savedId}</p>`;
+        outputDiv.innerHTML = `<p>Territorio Nro: ${savedId}</p>`;
         copyButton.style.display = 'block';
         editIdButton.style.display = 'block';
         deleteLastButton.style.display = 'block';
