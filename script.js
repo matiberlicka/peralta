@@ -73,8 +73,8 @@ document.addEventListener('DOMContentLoaded', () => {
         idForm.querySelector('button[type="submit"]').disabled = true;
         dataForm.style.display = 'block';
         outputDiv.innerHTML = `<p>Territorio Nro: ${savedId}</p>`;
-        copyButton.style.display = 'block';
-        editIdButton.style.display = 'block';
-        deleteLastButton.style.display = 'block';
+        copyButton.style.display = '';
+        editIdButton.style.display = '';
+        deleteLastButton.style.display = '';
     }
 });

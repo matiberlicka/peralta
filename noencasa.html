@@ -26,23 +26,26 @@
     <!-- botones*********************************************-->
 
     <div class="container">
-        <h1>NO EN CASA</h1>
+        <h1>Lista de no en casa</h1>
         <form id="id-form">
-            <label for="id-input">Nro de Territoio:</label>
+            <label for="id-input">Nro de Territorio:</label>
             <input type="text" id="id-input" required>
-            <button type="submit">Guardar Nro de Territorio</button>
-            <button type="button" id="edit-id-button" style="display: none;">Editar Nro de Territorio</button>
+            <button type="submit" class="button_slide slide_diagonal">Guardar Territorio</button>
+            <button type="button" id="edit-id-button" class="button_slide slide_down">Editar Territorio</button>
+
         </form>
+
         <form id="data-form" style="display: none;">
             <label for="name-input">Calle:</label>
             <input type="text" id="name-input" required>
             <label for="number-input">Número:</label>
             <input type="number" id="number-input" required>
-            <button type="submit">Agregar</button>
+            <button type="submit" class="button_slide slide_down">Agregar</button>
         </form>
+
         <div id="output"></div>
-        <button id="copy-button" style="display: none;">Copiar datos</button>
-        <button id="delete-last-button" style="display: none;">Borrar último dato</button>
+        <button id="copy-button" style="display: none;" class="button_slide slide_left">Copiar los datos para mandar</button>
+        <button id="delete-last-button" style="display: none;" class="button_slide slide_diagonal">Borrar último dato</button>
     </div>
     <script src="script.js"></script>
 
