@@ -1,80 +1,58 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const idForm = document.getElementById('id-form');
-    const dataForm = document.getElementById('data-form');
-    const idInput = document.getElementById('id-input');
-    const nameInput = document.getElementById('name-input');
-    const numberInput = document.getElementById('number-input');
-    const outputDiv = document.getElementById('output');
-    const copyButton = document.getElementById('copy-button');
-    const editIdButton = document.getElementById('edit-id-button');
-    const deleteLastButton = document.getElementById('delete-last-button');
+let currentSquare = null;
 
-    const entries = [];
+function showColorOptions(square) {
+    currentSquare = square;
+    const colorOptions = document.getElementById('colorOptions');
+    colorOptions.style.display = 'block';
+}
 
-    idForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-        const id = idInput.value.trim();
-        if (id) {
-            localStorage.setItem('uniqueId', id);
-            idInput.disabled = true;
-            idForm.querySelector('button[type="submit"]').disabled = true;
-            dataForm.style.display = 'block';
-            outputDiv.innerHTML = `<p>Territorio Nro: ${id}</p>`;
-            copyButton.style.display = 'block';
-            editIdButton.style.display = 'block';
-            deleteLastButton.style.display = 'block';
-        }
-    });
-
-    dataForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-        const name = nameInput.value.trim();
-        const number = numberInput.value;
-        if (name && number) {
-            const entry = `<p>${name}: ${number}</p>`;
-            outputDiv.innerHTML += entry;
-            entries.push(entry);
-            nameInput.value = '';
-            numberInput.value = '';
-        }
-    });
-
-    copyButton.addEventListener('click', () => {
-        const range = document.createRange();
-        range.selectNode(outputDiv);
-        window.getSelection().removeAllRanges();
-        window.getSelection().addRange(range);
-        try {
-            document.execCommand('copy');
-            alert('DATOS COPIADOS, LISTO PARA ENVIAR POR WASAP');
-        } catch (err) {
-            console.error('Error al copiar al portapapeles', err);
-        }
-        window.getSelection().removeAllRanges();
-    });
-
-    editIdButton.addEventListener('click', () => {
-        idInput.disabled = false;
-        idForm.querySelector('button[type="submit"]').disabled = false;
-        idInput.focus();
-    });
-
-    deleteLastButton.addEventListener('click', () => {
-        if (entries.length > 0) {
-            entries.pop();
-            outputDiv.innerHTML = `<p>ID: ${localStorage.getItem('uniqueId')}</p>` + entries.join('');
-        }
-    });
-
-    const savedId = localStorage.getItem('uniqueId');
-    if (savedId) {
-        idInput.value = savedId;
-        idInput.disabled = true;
-        idForm.querySelector('button[type="submit"]').disabled = true;
-        dataForm.style.display = 'block';
-        outputDiv.innerHTML = `<p>Territorio Nro: ${savedId}</p>`;
-        copyButton.style.display = '';
-        editIdButton.style.display = '';
-        deleteLastButton.style.display = '';
+function changeColor(color) {
+    if (currentSquare) {
+        currentSquare.style.backgroundColor = color;
+        closeColorOptions();
     }
-});
+}
+
+function closeColorOptions() {
+    const colorOptions = document.getElementById('colorOptions');
+    colorOptions.style.display = 'none';
+    currentSquare = null;
+}
+
+function updateTime() {
+    const now = new Date();
+    const datetime = document.getElementById('datetime');
+    datetime.textContent = "Fecha y hora actual: " + now.toLocaleString();
+}
+
+function saveName() {
+    const name = document.getElementById('conductorInput').value;
+    const savedName = document.getElementById('savedName');
+    savedName.textContent = "Conductor: " + name;
+    savedName.style.display = 'block';
+}
+  
+updateTime(); // Actualizar la hora al cargar la página
+setInterval(updateTime, 1000); // Actualizar la hora cada segundo
+
+
+
+
+
+
+function takeScreenshot() {
+    const container = document.querySelector('.container');
+    
+    html2canvas(container).then(canvas => {
+        // Convertir la captura de pantalla a una URL de datos
+        const screenshot = canvas.toDataURL('image/png');
+
+        // Crear un enlace temporal para descargar la imagen
+        const link = document.createElement('a');
+        link.href = screenshot;
+        link.download = 'screenshot.png';
+        
+        // Simular clic en el enlace para descargar la imagen
+        link.click();
+    });
+}
